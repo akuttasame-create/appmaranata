@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "motion/react";
 import { User, Rocket, MessageCircle, Wifi, ChevronRight } from "lucide-react";
-import WebViewModal from "./WebViewModal";
 
 export default function Home() {
-  const [isCentralOpen, setIsCentralOpen] = useState(false);
+  const handleCentral = () => {
+    window.open("https://maranata.sgp.net.br/accounts/central/login", "_blank");
+  };
 
   const handleSpeedTest = () => {
     window.open("https://play.google.com/store/apps/details?id=org.zwanoo.android.speedtest&hl=pt_BR", "_blank");
@@ -46,7 +47,7 @@ export default function Home() {
             icon={<User size={28} />}
             title="Central do Assinante"
             description="Acesse suas faturas, boletos e dados do contrato"
-            onClick={() => setIsCentralOpen(true)}
+            onClick={handleCentral}
             color="bg-blue-600"
             delay={0.3}
           />
@@ -90,14 +91,6 @@ export default function Home() {
       <footer className="p-6 text-center text-slate-400 text-xs">
         <p>© 2026 Maranata Connect. Todos os direitos reservados.</p>
       </footer>
-
-      {/* WebView Modal */}
-      <WebViewModal
-        isOpen={isCentralOpen}
-        onClose={() => setIsCentralOpen(false)}
-        url="https://maranata.sgp.net.br/accounts/central/login"
-        title="Central do Assinante"
-      />
     </div>
   );
 }
